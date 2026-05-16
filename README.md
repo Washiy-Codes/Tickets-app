@@ -1,10 +1,10 @@
-# 🎫 Ticket Management App
+# Ticket Management App
 
 A simple and efficient ticket management system for creating, tracking, and resolving issues in an organized way.
 
 ---
 
-## 🚀 Features
+## Features
 
 - Create, edit, and delete tickets  
 - Track ticket status (Open, In Progress, Resolved)  
@@ -14,7 +14,7 @@ A simple and efficient ticket management system for creating, tracking, and reso
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend:** Next.js, React, TypeScript  
 - **Backend:** Next.js (API routes / Server Actions)  
@@ -23,4 +23,4 @@ A simple and efficient ticket management system for creating, tracking, and reso
 
 ---
 
-## 📂 Project Structure
+## Project Structure
