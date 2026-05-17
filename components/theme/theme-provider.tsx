@@ -1,5 +1,4 @@
 
-
 import { ThemeProvider } from "next-themes";
 
 type ProviderProp = {

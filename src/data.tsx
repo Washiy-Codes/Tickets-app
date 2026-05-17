@@ -16,7 +16,7 @@ const initialData = [
         id: "3",
         title:"Ticket 3",
         content: "This is my third ticket",
-        status:"IN-PROGRESS" as const
+        status:"IN_PROGRESS" as const
     }
 ]
 

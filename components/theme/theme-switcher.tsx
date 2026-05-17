@@ -1,18 +1,24 @@
 "use client"
-import { useTheme } from "next-themes"
-import { Button } from "../ui/button"
-import { LucideMoon, LucideSun } from "lucide-react"
 
-const ThemeSwitcher = () => {
-  const { theme, setTheme } = useTheme()
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
+import { LucideMoon, LucideSun} from "lucide-react"
+
+export const ThemeSwitcher = () => {
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return null
 
   return (
-      <Button variant="default" size="icon" 
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")} >
-        {theme === "light" ? <LucideMoon /> : <LucideSun />}
-        <span className="sr-only">Switch theme</span>
-      </Button>
+    <button
+      onClick={() =>
+        setTheme(resolvedTheme === "dark" ? "light" : "dark")
+      }
+    >
+      {resolvedTheme === "dark" ? <LucideSun /> : <LucideMoon />}
+    </button>
   )
 }
-
-export { ThemeSwitcher }

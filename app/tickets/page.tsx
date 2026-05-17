@@ -1,17 +1,16 @@
-import initialData from "@/src/data"
+// "use client"
+import { TicketList } from "@/src/features/tickets/components/ticket-list"
 import Heading from "@/components/heading"
-import {TicketItem} from "@/src/features/tickets/components/ticket_item"
+import { Suspense } from "react"
+import Spinner from "@/app/tickets/loading"
 
-const TicketsPage = () => {
-    
+const TicketsPage = () => {    
   return (
     <div className="flex flex-1 gap-8 flex-col">
       <Heading title="Tickets" description="Your tickets page to start"/>
-      <div className="flex flex-1 flex-col items-center gap-4 animate animate-fade-in-from-top">
-      {initialData.map((ticket)=>(
-          <TicketItem key={ticket.id} ticket={ticket}/>  
-        ))}
-      </div>
+      <Suspense fallback={<Spinner />}>
+       < TicketList />
+      </Suspense>
     </div>
   )
 }

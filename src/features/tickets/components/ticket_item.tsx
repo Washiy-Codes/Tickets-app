@@ -6,12 +6,13 @@ import {
     CardTitle,
     CardContent,
   } from "@/components/ui/card"
-import { Ticket } from "./types"
+// import { Ticket } from "./types" 
 import { TICKET_ICONS } from "./constants"
 import { LucideSquareArrowOutUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import clsx from "clsx"
-
+// import { Ticket } from "@/app/generated/prisma/client"
+import { Ticket } from "@/app/generated/prisma/client" 
 type TicketItemProps = {
     ticket: Ticket,
     isDetailed?: boolean,
