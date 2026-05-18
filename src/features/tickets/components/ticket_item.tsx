@@ -1,3 +1,4 @@
+
 import Link from "next/link"
 import {ticketPath} from "@/src/paths"
 import {
@@ -5,13 +6,12 @@ import {
     CardHeader,
     CardTitle,
     CardContent,
-  } from "@/components/ui/card"
-// import { Ticket } from "./types" 
+  } from "@/components/ui/card" 
 import { TICKET_ICONS } from "./constants"
-import { LucideSquareArrowOutUpRight } from "lucide-react"
+import { LucideSquareArrowOutUpRight, LucideTrash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import clsx from "clsx"
-// import { Ticket } from "@/app/generated/prisma/client"
+import { deleteTicket } from "../actions/delete-ticket"
 import { Ticket } from "@/app/generated/prisma/client" 
 type TicketItemProps = {
     ticket: Ticket,
@@ -20,12 +20,24 @@ type TicketItemProps = {
 
 const TicketItem = ({ticket, isDetailed}: TicketItemProps) => {
 
-    const detailedButton = <Button variant="default" size="icon" asChild>
+    const detailedButton = <Button variant="default" size="icon" asChild className="h-8 w-8">
     <Link href={ticketPath(ticket.id)}>
       <LucideSquareArrowOutUpRight />
     </Link>
   </Button>
+
+  /* const handleClick = async()=>{
+     await deleteTicket(ticket.id)
+  } */
+
+const deleteButton = 
+<form action={deleteTicket.bind(null, ticket.id)}>
+<Button variant="default" size="icon" className="h-8 w-8">
+  <LucideTrash2 />
+</Button>
         
+</form>
+
 
   return (
     <div className={clsx("flex w-full  gap-x-1.5", {
@@ -48,7 +60,9 @@ const TicketItem = ({ticket, isDetailed}: TicketItemProps) => {
                 
             </Card>
             <div className="flex flex-col gap-y-1">
-              {isDetailed ? null : <div className="flex flex-col gap-y-2">{detailedButton}</div>}
+             <div className="flex flex-col gap-y-2">
+              {isDetailed ? deleteButton : detailedButton}
+              </div>
             </div>
             
     </div>
