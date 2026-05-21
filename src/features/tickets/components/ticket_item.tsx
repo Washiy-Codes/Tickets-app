@@ -1,6 +1,6 @@
 
 import Link from "next/link"
-import {ticketPath} from "@/src/paths"
+import {editTicketPath, ticketPath} from "@/src/paths"
 import {
     Card,
     CardHeader,
@@ -8,7 +8,7 @@ import {
     CardContent,
   } from "@/components/ui/card" 
 import { TICKET_ICONS } from "./constants"
-import { LucideSquareArrowOutUpRight, LucideTrash2 } from "lucide-react"
+import { LucidePenLine, LucideSquareArrowOutUpRight, LucideTrash2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import clsx from "clsx"
 import { deleteTicket } from "../actions/delete-ticket"
@@ -20,19 +20,21 @@ type TicketItemProps = {
 
 const TicketItem = ({ticket, isDetailed}: TicketItemProps) => {
 
-    const detailedButton = <Button variant="default" size="icon" asChild className="h-8 w-8">
+    const detailedButton = <Button variant="default" size="icon" asChild className="h-7 w-7">
     <Link href={ticketPath(ticket.id)}>
       <LucideSquareArrowOutUpRight />
     </Link>
   </Button>
 
-  /* const handleClick = async()=>{
-     await deleteTicket(ticket.id)
-  } */
+  const updateTicketButton = <Button variant="default" size="icon" asChild className="h-7 w-7">
+    <Link href={editTicketPath(`${ticket.id}`)}>
+       <LucidePenLine />
+    </Link>
+  </Button>
 
 const deleteButton = 
 <form action={deleteTicket.bind(null, ticket.id)}>
-<Button variant="default" size="icon" className="h-8 w-8">
+<Button variant="default" size="icon" className="h-7 w-7">
   <LucideTrash2 />
 </Button>
         
@@ -61,8 +63,18 @@ const deleteButton =
             </Card>
             <div className="flex flex-col gap-y-1">
              <div className="flex flex-col gap-y-2">
-              {isDetailed ? deleteButton : detailedButton}
-              </div>
+                {isDetailed ? (
+                  <>
+                    {updateTicketButton}
+                    {deleteButton}
+                  </>
+                ) : (
+                  <>
+                    {detailedButton}
+                    {updateTicketButton}
+                  </>
+                )}
+            </div>
             </div>
             
     </div>
