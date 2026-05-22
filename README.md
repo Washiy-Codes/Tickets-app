@@ -1,10 +1,10 @@
-# 🎫 Ticket Management System
+# Ticket Management System
 
 A full-stack ticket management application designed to streamline issue tracking, improve workflow efficiency, and provide a clean user experience for managing tasks from creation to resolution.
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 - **Full CRUD Functionality** – Create, update, and delete tickets seamlessly  
 - **Status Management** – Track tickets through stages: *Open*, *In Progress*, and *Resolved*  
@@ -15,7 +15,7 @@ A full-stack ticket management application designed to streamline issue tracking
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - **Frontend:** :contentReference[oaicite:0]{index=0}, :contentReference[oaicite:1]{index=1}, TypeScript  
 - **Backend:** Next.js Server Actions / API Routes  
@@ -24,7 +24,7 @@ A full-stack ticket management application designed to streamline issue tracking
 
 ---
 
-## 🏗️ Architecture Highlights
+## Architecture Highlights
 
 - Separation of concerns using feature-based structure  
 - Reusable UI components for scalability  
@@ -33,7 +33,7 @@ A full-stack ticket management application designed to streamline issue tracking
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```bash
 src/
