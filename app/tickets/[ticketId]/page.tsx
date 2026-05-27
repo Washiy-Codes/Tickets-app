@@ -3,13 +3,13 @@ import { TicketItem } from "@/src/features/tickets/components/ticket_item"
 import getTicket from "@/src/features/queries/get-ticket"
 import { notFound } from "next/navigation"
 
-type TicketpageProps = {
+type TicketPageProps = {
     params : Promise<{
         ticketId: string,
     }>
 }
 
-const Ticketpage = async({params}:TicketpageProps) => {
+const TicketPage = async({params}:TicketPageProps) => {
   const {ticketId} = await params
   const ticket = await getTicket(ticketId);
   if(!ticket){
@@ -22,6 +22,6 @@ const Ticketpage = async({params}:TicketpageProps) => {
   )
 }
 
-export default Ticketpage 
+export default TicketPage 
 
 
