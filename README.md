@@ -33,7 +33,7 @@ A full-stack ticket management application designed to streamline issue tracking
 
 ---
 
-### Tickets Overview
+## Tickets Overview
 ![Tickets Page](./screenshots/tickets-page.png)
 
 ## Project Structure
