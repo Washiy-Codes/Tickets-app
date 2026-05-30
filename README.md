@@ -38,12 +38,4 @@ A full-stack ticket management application designed to streamline issue tracking
 
 ## Project Structure
 
-```bash
-src/
-  features/
-    tickets/
-      components/
-      actions/
-  lib/
-  app/
-components/
+
