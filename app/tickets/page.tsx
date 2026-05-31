@@ -4,7 +4,6 @@ import Heading from "@/components/heading"
 import { Suspense } from "react"
 import Spinner from "@/app/tickets/loading"
 import { CardCompact } from "@/src/features/tickets/components/card-compact"
-import { TicketCreateForm } from "@/src/features/tickets/components/Ticket-Create-Form"
 import { TicketUpsertForm } from "@/src/features/tickets/components/ticket-upsert-form"
 
 const TicketsPage = () => {    

@@ -1,6 +1,5 @@
 import getTicket from "@/src/features/queries/get-ticket";
 import { CardCompact } from "@/src/features/tickets/components/card-compact"
-import { TicketUpdateForm } from "@/src/features/tickets/components/ticket-update-form";
 import { TicketUpsertForm } from "@/src/features/tickets/components/ticket-upsert-form";
 import { notFound } from "next/navigation";
 
