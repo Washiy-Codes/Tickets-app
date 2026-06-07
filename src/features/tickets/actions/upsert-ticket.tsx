@@ -4,13 +4,16 @@ import { ticketPath, ticketsPath } from "@/src/paths";
 import { revalidatePath } from "next/cache";
 import { z } from "zod"
 import { redirect } from "next/navigation";
+import { ActionState, fromErrorToActionState } from "@/components/form/utils/to-action-state";
 
 const upsertTicketScheme = z.object({
     title: z.string().min(1, "Title is required").max(191),
     content:z.string().min(1, "Content is required").max(1024)
 })
 
-const upsertTicket = async (id: string | undefined, _state: {message:string, payload?: FormData}, formData: FormData) => {
+const upsertTicket = async (id: string | undefined, 
+    _state: ActionState, 
+    formData: FormData) => {
     try{
     const data = upsertTicketScheme.parse({
         title: formData.get("title"),
@@ -31,7 +34,7 @@ const upsertTicket = async (id: string | undefined, _state: {message:string, pay
        }
     });
 }catch(error){
-    return {message :"something went wrong", payload: formData}
+    return fromErrorToActionState(error, formData);
 }
     revalidatePath(ticketsPath());
 
