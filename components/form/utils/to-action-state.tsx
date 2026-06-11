@@ -1,20 +1,30 @@
-import z, { ZodError } from "zod";
-
+import { ZodError } from "zod";
 
 export type ActionState = {
     message: string;
+    fieldErrors?: Record<string, string[]> | undefined;
     payload?: FormData;
 }
+const FromErrorToActionState = (error: unknown, formData: FormData ): ActionState => {
+      if(error instanceof ZodError) {
+        return {  
+          message: "",
+          payload: formData,
+          fieldErrors: error.flatten().fieldErrors
+        }
+      } else if(error instanceof Error){
+        return {
+          message: error.message,
+          fieldErrors: {},
+          payload: formData
+        }
+      } else {
+        return {
+          message: "something went wrong",
+          payload: formData,
+          fieldErrors: {}
+        }
+      }
+}
 
-const fromErrorToActionState = (error: unknown, payload: FormData): ActionState => {
-  if (error instanceof ZodError) {
-    return { message: error.issues[0].message, payload };
-  }else if (error instanceof Error) {
-    return { message: error.message, payload };
-  }else {
-    console.error("Unexpected error:", error);
-  }
-  return { message: "Unknown error occurred", payload };
-};
-
-export { fromErrorToActionState };
+export {FromErrorToActionState}
