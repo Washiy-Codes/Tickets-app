@@ -1,5 +1,5 @@
 "use server"
-import { ActionState, FromErrorToActionState } from "@/components/form/utils/to-action-state";
+import { ActionState, FromErrorToActionState, FromSuccessToActionState } from "@/components/form/utils/to-action-state";
 import prisma from "@/lib/prisma"
 import { ticketPath, ticketsPath } from "@/src/paths";
 import { revalidatePath } from "next/cache";
@@ -39,7 +39,7 @@ const upsertTicket = async (
     if (id) {
         redirect(ticketPath(id))
     }
-    return {message: "Ticket created", fieldErrors: {}};
+    return FromSuccessToActionState("SUCCESS", "Ticket created successfully")
 }
 
 export { upsertTicket }
